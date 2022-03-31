@@ -1,15 +1,17 @@
+#pip install selenium
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import urllib.request
 import os
 
-keywords=input("검색할 키워드: ") #Enter a keyword to search for.
+keywords=input("검색할 키워드: ") #Enter a keyword to search for. You need to use English to get a lot of search results.
 
 if not os.path.isdir('./{}'.format(keywords)): #Create a folder of keyword names.
     os.mkdir('./{}'.format(keywords))
 
-driver = webdriver.Chrome('./chromedriver.exe') #chromedriver  route.
+driver = webdriver.Chrome('./chromedriver.exe') #chromedriver  route. Here, it is located on the local disk (:C).
 driver.get("https://www.google.co.kr/imghp?hl=ko&tab=ri&ogbl") #Google image page.
 elem = driver.find_element_by_name("q")
 elem.send_keys(keywords)
